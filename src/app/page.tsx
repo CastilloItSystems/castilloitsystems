@@ -10,7 +10,7 @@ export default function Home() {
           fontFamily: 'Comic Sans MS, cursive, sans-serif',
         }}
       >
-        👋 ¡Hola Mundo!
+        👋 ¡Hola Mundo!!
       </h1>
       <p style={{ fontSize: '2rem', color: '#333', marginTop: '1rem' }}>Castillo IT Systems 🚀</p>
     </main>
