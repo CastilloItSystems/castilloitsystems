@@ -1,8 +1,17 @@
-@import "tailwindcss";
+@import url('https://unpkg.com/aos@next/dist/aos.css');
+@import url('https://unpkg.com/swiper/swiper-bundle.min.css');
+@import 'tailwindcss';
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary-color: #0a192f;
+  --secondary-color: #112240;
+  --text-color-light: #ccd6f6;
+  --text-color-dark: #8892b0;
+  --accent-color: #64ffda;
+  --white-color: #ffffff;
+  --header-height: 70px;
 }
 
 @theme inline {
@@ -16,11 +25,32 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --primary-color: #0a0a0a;
+    --secondary-color: #171717;
+    --text-color-light: #ededed;
+    --text-color-dark: #8892b0;
+    --accent-color: #64ffda;
+    --white-color: #ffffff;
   }
 }
 
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background-color: var(--primary-color);
+  color: var(--text-color-light);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }

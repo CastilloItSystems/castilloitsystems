@@ -1,0 +1,75 @@
+/* Similar al CSS original, pero con nombres de clase para el módulo */
+.hero {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.heroVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 25, 47, 0.7);
+  z-index: -1;
+}
+.heroContent {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.heroLogo {
+  max-width: 400px;
+  height: auto;
+  margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.heroTitle {
+  font-size: 3rem;
+  color: var(--white-color);
+  font-weight: 700;
+  margin-bottom: 20px;
+  max-width: 800px;
+}
+.heroSubtitle {
+  font-size: 1.2rem;
+  color: var(--text-color-light);
+  max-width: 700px;
+  margin-bottom: 40px;
+}
+.ctaButton {
+  background-color: transparent;
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
+  padding: 15px 30px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.ctaButton:hover {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+}
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2.2rem;
+  }
+}

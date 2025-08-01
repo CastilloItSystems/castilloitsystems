@@ -1,0 +1,92 @@
+.contactSection {
+  background-color: var(--secondary-color);
+  padding: 100px 10%;
+  overflow: hidden;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  color: var(--white-color);
+  text-align: center;
+  margin-bottom: 60px;
+  font-weight: 600;
+}
+
+.contactContainer {
+  display: flex;
+  gap: 50px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contactForm {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contactForm input,
+.contactForm textarea {
+  width: 100%;
+  padding: 15px;
+  background-color: var(--primary-color);
+  border: 1px solid var(--text-color-dark);
+  border-radius: 5px;
+  color: var(--white-color);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.contactForm input:focus,
+.contactForm textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+.ctaButton {
+  background-color: transparent;
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
+  padding: 15px 30px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  align-self: flex-start;
+}
+
+.ctaButton:hover {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+}
+
+.contactInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding-top: 10px;
+  font-size: 1.1rem;
+}
+
+.contactInfo p {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.contactInfo svg {
+  color: var(--accent-color);
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .contactContainer {
+    flex-direction: column;
+  }
+  .sectionTitle {
+    font-size: 2rem;
+  }
+}

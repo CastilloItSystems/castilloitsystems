@@ -1,18 +1,21 @@
+import { About } from '@/features/landing/About';
+import { Contact } from '@/features/landing/Contact';
+import { Header } from '@/features/landing/Header';
+import { Hero } from '@/features/landing/Hero';
+import { Portfolio } from '@/features/landing/Portfolio';
+import { Services } from '@/features/landing/Services';
+
 export default function Home() {
   return (
-    <main
-      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '4rem' }}
-    >
-      <h1
-        style={{
-          fontSize: '3rem',
-          color: '#0070f3',
-          fontFamily: 'Comic Sans MS, cursive, sans-serif',
-        }}
-      >
-        👋 ¡Hola Mundo!!
-      </h1>
-      <p style={{ fontSize: '2rem', color: '#333', marginTop: '1rem' }}>Castillo IT Systems 🚀</p>
-    </main>
+    <>
+      <Header />
+      <main>
+        <Hero />
+        <Services />
+        <Portfolio />
+        <About />
+        <Contact />
+      </main>
+    </>
   );
 }

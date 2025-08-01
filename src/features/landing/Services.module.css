@@ -1,0 +1,60 @@
+.servicesSection {
+  background-color: #fff;
+  padding: 100px 10%;
+  overflow: hidden;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  color: #1f4e79;
+  text-align: center;
+  margin-bottom: 60px;
+  font-weight: 600;
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.serviceCard {
+  background-color: #fff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  border: 2px solid #e3eaf3;
+  box-shadow: 0 2px 8px rgba(31, 78, 121, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.serviceCard:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 24px rgba(31, 78, 121, 0.15);
+  border-color: #1f4e79;
+}
+
+.cardContent h3 {
+  /* Se usa .cardTitle en vez de h3 directo */
+}
+.cardTitle {
+  color: #1f4e79;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+}
+.cardContent p {
+  color: var(--text-color-dark);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 2rem;
+  }
+}
