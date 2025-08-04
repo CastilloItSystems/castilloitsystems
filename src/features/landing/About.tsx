@@ -38,7 +38,7 @@ export const About = () => {
       <div className={styles.aboutContainer} data-aos="fade-up" data-aos-delay="200">
         <div className={styles.aboutImage}>
           <Image
-            src="/assets/images/about-us.jpeg"
+            src="/assets/images/aboutv2.jpg"
             alt="Equipo de Castillo IT Systems"
             width={500}
             height={200}
