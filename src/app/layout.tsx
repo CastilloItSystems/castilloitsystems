@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import './globals.css';
 import { AOSInitializer } from '@/features/landing/AOSInitializer';
+import N8nChatWidget from '@/components/N8nChatWidget';
 
 // Configuración de la fuente
 const poppins = Poppins({
@@ -25,6 +26,7 @@ export default function RootLayout({
       <body className={poppins.className}>
         <AOSInitializer />
         {children}
+        <N8nChatWidget />
       </body>
     </html>
   );

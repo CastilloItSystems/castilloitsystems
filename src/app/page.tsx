@@ -1,5 +1,6 @@
 import { About } from '@/features/landing/About';
 import { Contact } from '@/features/landing/Contact';
+import { Footer } from '@/features/landing/Footer';
 import { Header } from '@/features/landing/Header';
 import { Hero } from '@/features/landing/Hero';
 import { Portfolio } from '@/features/landing/Portfolio';
@@ -15,6 +16,7 @@ export default function Home() {
         <Portfolio />
         <About />
         <Contact />
+        <Footer />
       </main>
     </>
   );
