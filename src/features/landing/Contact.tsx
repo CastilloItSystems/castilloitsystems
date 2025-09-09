@@ -4,11 +4,20 @@ import { FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 import styles from './Contact.module.css';
 
 export const Contact = () => {
+  // Minimal type for grecaptcha on window to avoid any
+  type Grecaptcha = { execute: (siteKey: string, opts: { action: string }) => Promise<string> };
+  type WindowWithRecaptcha = Window & { grecaptcha?: Grecaptcha };
+  const gRecaptcha: Grecaptcha | undefined =
+    typeof window !== 'undefined' && (window as WindowWithRecaptcha).grecaptcha
+      ? (window as WindowWithRecaptcha).grecaptcha
+      : undefined;
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus('sending');
+    setError(null);
     const form = e.currentTarget;
     const formData = new FormData(form);
     const generateId = () => {
@@ -18,28 +27,51 @@ export const Contact = () => {
       // Fallback simple
       return 'id-' + Math.random().toString(36).substr(2, 9) + Date.now();
     };
-    const data = {
-      id: generateId(),
-      name: formData.get('name') as string,
-      email: formData.get('email') as string,
-      message: formData.get('message') as string,
-    };
+    const name = String(formData.get('name') || '').trim();
+    const email = String(formData.get('email') || '').trim();
+    const message = String(formData.get('message') || '').trim();
+    if (name.length < 2) {
+      setStatus('idle');
+      setError('Por favor ingresa un nombre válido.');
+      return;
+    }
+    if (!/.+@.+\..+/.test(email)) {
+      setStatus('idle');
+      setError('Ingresa un correo válido.');
+      return;
+    }
+    if (message.length < 10) {
+      setStatus('idle');
+      setError('El mensaje es muy corto.');
+      return;
+    }
+
+    const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+    let recaptchaToken: string | undefined;
     try {
-      const res = await fetch(
-        'https://mentorn8n-e0f02b9eb5c1.herokuapp.com/webhook/solicitud-cita',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
-        }
-      );
+      if (recaptchaSiteKey && gRecaptcha) {
+        recaptchaToken = await gRecaptcha.execute(recaptchaSiteKey, { action: 'submit' });
+      }
+    } catch {
+      // ignore recaptcha errors; server will enforce if enabled
+    }
+    const data = { id: generateId(), name, email, message, recaptchaToken };
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
       if (res.ok) {
         setStatus('success');
         form.reset();
       } else {
+        const { error: errMsg } = await res.json().catch(() => ({ error: null }));
+        setError(errMsg || 'No se pudo enviar el mensaje.');
         setStatus('error');
       }
     } catch {
+      setError('Error de red. Intenta nuevamente.');
       setStatus('error');
     }
   };
@@ -65,9 +97,7 @@ export const Contact = () => {
           {status === 'success' && (
             <p className={styles.successMsg}>¡Mensaje enviado correctamente!</p>
           )}
-          {status === 'error' && (
-            <p className={styles.errorMsg}>Hubo un error al enviar. Intenta de nuevo.</p>
-          )}
+          {status === 'error' && <p className={styles.errorMsg}>{error}</p>}
         </form>
         <div className={styles.contactInfo} data-aos="fade-left">
           <p>

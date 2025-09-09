@@ -20,6 +20,17 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Environment variables
+
+Copy `.env.example` to `.env.local` and set:
+
+- `NEXT_PUBLIC_N8N_CHAT_WEBHOOK`: Public webhook for n8n chat widget.
+- `N8N_CONTACT_WEBHOOK_URL`: Server-side webhook URL to forward contact messages.
+- `RECAPTCHA_ENABLED`: `true` to enable reCAPTCHA verification on the server.
+- `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` and `RECAPTCHA_SECRET_KEY`: Site and secret keys for Google reCAPTCHA v3.
+
+The contact form posts to `/api/contact`, which validates input, optionally verifies reCAPTCHA, and forwards to `N8N_CONTACT_WEBHOOK_URL`.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

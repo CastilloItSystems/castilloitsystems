@@ -16,6 +16,8 @@ export const Hero = () => {
           width={400}
           height={55}
           className={styles.heroLogo}
+          priority
+          sizes="(max-width: 768px) 70vw, 400px"
         />
         <h1 className={styles.heroTitle}>Tu Socio en Soluciones Tecnológicas Integrales</h1>
         <p className={styles.heroSubtitle}>

@@ -120,14 +120,16 @@ export const Portfolio = () => {
           {portfolioItems.map((item, index) => (
             <SwiperSlide key={index} className={styles.swiperSlide}>
               <div onClick={() => handleCardClick(item)} style={{ cursor: 'pointer' }}>
-                <Image
-                  src={item.img}
-                  alt={item.title}
-                  width={0}
-                  height={300}
-                  style={{ objectFit: 'contain', width: '100%', height: '100%' }}
-                  sizes="100vw"
-                />
+                <div style={{ position: 'relative', width: '100%', paddingTop: '62%' }}>
+                  <Image
+                    src={item.img}
+                    alt={item.title}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+                    priority={index < 2}
+                  />
+                </div>
                 <div className={styles.slideInfo}>
                   <h3>{item.title}</h3>
                   <p>{item.desc}</p>

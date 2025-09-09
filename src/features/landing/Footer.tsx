@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styles from './Footer.module.css';
-import { FaFacebookF, FaLinkedinIn, FaTiktok, FaWhatsapp } from 'react-icons/fa';
+import { FaLinkedinIn, FaTiktok, FaWhatsapp } from 'react-icons/fa';
 
 export const Footer = () => {
   return (
@@ -18,7 +18,7 @@ export const Footer = () => {
         <div className={styles.linksSection}>
           <a href="#servicios">Servicios</a>
           <a href="#portfolio">Portafolio</a>
-          <a href="#contacto">Contacto</a>
+          <a href="#contact">Contacto</a>
         </div>
         {/* <div className={styles.contactSection}>
           <span>Email: contacto@castilloitsystems.com</span>

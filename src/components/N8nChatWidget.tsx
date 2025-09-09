@@ -5,9 +5,11 @@ import { createChat } from '@n8n/chat';
 
 const N8nChatWidget = () => {
   useEffect(() => {
+    const webhookUrl =
+      process.env.NEXT_PUBLIC_N8N_CHAT_WEBHOOK ||
+      'https://mentorn8n-e0f02b9eb5c1.herokuapp.com/webhook/5e767a5d-ee39-4a2f-8581-ca8b8fd23f73/chat';
     createChat({
-      webhookUrl:
-        'https://mentorn8n-e0f02b9eb5c1.herokuapp.com/webhook/5e767a5d-ee39-4a2f-8581-ca8b8fd23f73/chat', // Cambia por tu URL real
+      webhookUrl,
       webhookConfig: {
         method: 'POST',
         headers: {},
