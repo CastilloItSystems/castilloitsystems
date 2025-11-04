@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta Visual - AutoSys</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F0F4F8;
+            color: #1E293B;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .card {
+            background-color: #FFFFFF;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+        .card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+        .process-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0.25rem;
+            min-width: 65px;
+        }
+        .process-step span {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            background-color: #F1F5F9;
+            border: 1px solid #E2E8F0;
+            width: 100%;
+        }
+        .process-arrow {
+            font-size: 1.5rem;
+            color: #94A3B8;
+            margin: 0.25rem 0;
+        }
+        .timeline-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+        .timeline-dot {
+            width: 1.5rem;
+            height: 1.5rem;
+            background-color: #0043A3;
+            border-radius: 9999px;
+            border: 4px solid #FFFFFF;
+        }
+        .timeline-line {
+            position: absolute;
+            top: 0.75rem;
+            left: 5%;
+            right: 5%;
+            height: 4px;
+            background-color: #E2E8F0;
+            z-index: 1;
+        }
+        .text-primary { color: #0043A3; }
+        .bg-primary { background-color: #0043A3; }
+        .border-primary { border-color: #0043A3; }
+        .text-accent-orange { color: #FF7A1A; }
+        .bg-accent-orange { background-color: #FF7A1A; }
+        .text-accent-yellow { color: #FFB800; }
+        .bg-accent-yellow { background-color: #FFB800; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="sticky top-0 bg-white shadow-sm z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-primary">Propuesta Visual AutoSys</h1>
+            <div class="hidden md:flex space-x-6">
+                <a href="#problema" class="font-semibold text-gray-600 hover:text-primary">El Problema</a>
+                <a href="#solucion" class="font-semibold text-gray-600 hover:text-primary">La Solución</a>
+                <a href="#valor" class="font-semibold text-gray-600 hover:text-primary">Valor Estratégico</a>
+                <a href="#plan" class="font-semibold text-gray-600 hover:text-primary">El Plan</a>
+                <a href="#inversion" class="font-semibold text-gray-600 hover:text-primary">Inversión</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="hero" class="text-center my-12 md:my-20">
+            <h1 class="text-4xl md:text-6xl font-black mb-4">
+                La <span class="text-primary">Transformación Digital</span> de su Taller
+            </h1>
+            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+                Deje de gestionar: empiece a <span class="font-bold">optimizar, controlar y crecer</span>. Esta es la propuesta de valor de AutoSys para ALMACENADORA MI VIEJO Y YO, C.A.
+            </p>
+        </section>
+
+        <section id="problema" class="my-16">
+            <h2 class="text-3xl font-bold text-center mb-10">El Costo Oculto de la Gestión Manual</h2>
+            <p class="text-lg text-gray-600 text-center max-w-2xl mx-auto mb-12">
+                Los procesos manuales, el papel y las hojas de cálculo no solo son lentos; generan fricción, errores y fugas de capital que frenan su crecimiento.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="card p-6 border-t-4 border-red-500">
+                    <span class="text-5xl font-bold text-red-500">?</span>
+                    <h3 class="text-xl font-bold mt-4 mb-2">Órdenes Perdidas</h3>
+                    <p class="text-gray-600">Papeles que se traspapelan y dificultad para conocer el estado real de una reparación.</p>
+                </div>
+                <div class="card p-6 border-t-4 border-yellow-500">
+                    <span class="text-5xl font-bold text-yellow-500">$$$</span>
+                    <h3 class="text-xl font-bold mt-4 mb-2">Capital Improductivo</h3>
+                    <p class="text-gray-600">Dinero estancado en repuestos que no rotan y compras urgentes a sobreprecio por falta de stock.</p>
+                </div>
+                <div class="card p-6 border-t-4 border-orange-500">
+                    <span class="text-5xl font-bold text-orange-500">8h+</span>
+                    <h3 class="text-xl font-bold mt-4 mb-2">Doble Trabajo</h3>
+                    <p class="text-gray-600">Errores manuales al transcribir órdenes en facturas, causando demoras en la facturación y el cobro.</p>
+                </div>
+                <div class="card p-6 border-t-4 border-gray-400">
+                    <span class="text-5xl font-bold text-gray-400">1x</span>
+                    <h3 class="text-xl font-bold mt-4 mb-2">Servicio Impersonal</h3>
+                    <p class="text-gray-600">Clientes sin historial, dificultando la fidelización y la sugerencia de mantenimientos preventivos.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="solucion" class="my-16">
+            <h2 class="text-3xl font-bold text-center mb-10">AutoSys: El Motor de su Eficiencia</h2>
+            <p class="text-lg text-gray-600 text-center max-w-2xl mx-auto mb-12">
+                AutoSys ataca estos problemas de raíz, digitalizando y optimizando cada punto de impacto en su operación.
+            </ar>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <div class="card p-6 flex flex-col">
+                    <h3 class="text-xl font-bold mb-4">Impacto 1: Control Total de Operaciones</h3>
+                    <p class="text-gray-600 mb-6">De un flujo manual complejo a un proceso digital simple y trazable. Sepa qué pasa, quién lo hace y cuándo estará listo.</p>
+                    <div class="flex-grow flex flex-col justify-center">
+                        <h4 class="font-bold text-center text-gray-500 mb-2">ANTES: Flujo Manual</h4>
+                        <div class="flex justify-around flex-wrap mb-8">
+                            <div class="process-step"><span>Recepción</span></div>
+                            <div class="process-step"><div class="process-arrow">→</div></div>
+                            <div class="process-step"><span>Papel</span></div>
+                            <div class="process-step"><div class="process-arrow">→</div></div>
+                            <div class="process-step"><span>Técnico</span></div>
+                            <div class="process-step"><div class="process-arrow">→</div></div>
+                            <div class="process-step"><span>¿Estado?</span></div>
+                        </div>
+                        <h4 class="font-bold text-center text-primary mb-2">DESPUÉS: Flujo AutoSys</h4>
+                        <div class="flex justify-around flex-wrap">
+                            <div class="process-step"><span class="text-primary border-primary">Recepción</span></div>
+                            <div class="process-step"><div class="process-arrow text-primary">→</div></div>
+                            <div class="process-step"><span class="text-primary border-primary">AutoSys</span></div>
+                            <div class="process-step"><div class="process-arrow text-primary">→</div></div>
+                            <div class="process-step"><span class="text-primary border-primary">Trazable</span></div>
+                            <div class="process-step"><div class="process-arrow text-primary">→</div></div>
+                            <div class="process-step"><span class="text-primary border-primary">Listo</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-6 flex flex-col">
+                    <h3 class="text-xl font-bold mb-4">Impacto 2: Optimización de Inventario</h3>
+                    <p class="text-gray-600 mb-6">Convierta el dinero inmóvil en un activo rotativo. AutoSys le da visibilidad total para optimizar el stock y reducir las fugas de capital.</p>
+                    <div class="flex-grow chart-container">
+                        <canvas id="inventoryChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card p-6 flex flex-col">
+                    <h3 class="text-xl font-bold mb-4">Impacto 3: Aceleración del Flujo de Caja</h3>
+                    <p class="text-gray-600 mb-6">La facturación en un clic. Elimine el doble trabajo y los errores manuales, y cobre más rápido.</p>
+                    <div class="flex-grow chart-container">
+                        <canvas id="billingChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card p-6 flex flex-col">
+                    <h3 class="text-xl font-bold mb-4">Impacto 4: Profesionalización y Fidelización</h3>
+                    <p class="text-gray-600 mb-6">El historial completo del cliente y vehículo en segundos. Ofrezca un servicio profesional y aumente la retención.</p>
+                    <div class="flex-grow chart-container">
+                        <canvas id="crmChart"></canvas>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="valor" class="my-16">
+            <h2 class="text-3xl font-bold text-center mb-10">Valor Estratégico: Más Allá de la Operación</h2>
+            <p class="text-lg text-gray-600 text-center max-w-2xl mx-auto mb-12">
+                AutoSys no solo arregla el presente, construye las bases para un futuro más rentable y seguro, dándole el control estratégico de su negocio.
+            </ar>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card p-6 flex flex-col">
+                    <h3 class="text-xl font-bold mb-4">Decisiones con Datos, no con Intuición</h3>
+                    <p class="text-gray-600 mb-6">Gane visibilidad completa de su negocio. Identifique qué servicios son más rentables, qué repuestos rotan más y dónde están sus cuellos de botella.</p>
+                    <div class="flex-grow chart-container">
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                </div>
+                <div class="card p-6 flex flex-col">
+                    <h3 class="text-xl font-bold mb-4">Seguridad, Roles y Control</h3>
+                    <p class="text-gray-600 mb-6">Usted decide quién ve qué. Proteja su información y asigne permisos específicos para el recepcionista, el almacenista y el gerente.</p>
+                    <div class="flex-grow flex flex-col justify-center space-y-4 p-4">
+                        <div class="flex items-center space-x-4">
+                            <span class="text-2xl">👤</span>
+                            <div class="flex-1">
+                                <h4 class="font-bold">Administrador</h4>
+                                <p class="text-sm text-gray-500">Acceso total. Configura el sistema.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <span class="text-2xl">🔧</span>
+                            <div class="flex-1">
+                                <h4 class="font-bold">Gerente de Taller</h4>
+                                <p class="text-sm text-gray-500">Supervisa operaciones y reportes.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <span class="text-2xl">📋</span>
+                            <div class="flex-1">
+                                <h4 class="font-bold">Recepcionista</h4>
+                                <p class="text-sm text-gray-500">Crea OTs y factura.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <span class="text-2xl">📦</span>
+                            <div class="flex-1">
+                                <h4 class="font-bold">Almacenista</h4>
+                                <p class="text-sm text-gray-500">Gestiona entradas y salidas de stock.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="inversion" class="my-16">
+            <h2 class="text-3xl font-bold text-center mb-10">Inversión Clara y Transparente</h2>
+            <p class="text-lg text-gray-600 text-center max-w-2xl mx-auto mb-12">
+                Una inversión única para una transformación completa, con un plan de pagos diseñado para su confianza y seguridad.
+            </ar>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card p-8 flex flex-col justify-center items-center text-center bg-gray-50 md:col-span-2">
+                    <h3 class="text-2xl font-bold text-gray-600 mb-2">Inversión Total del Proyecto</h3>
+                    <span class="text-6xl font-black text-primary my-4">$4,200 <span class="text-4xl font-bold">USD</span></span>
+                    <p class="text-gray-500 max-w-md">Incluye la adecuación completa del software AutoSys, capacitación, puesta en marcha y todos los valores agregados.</p>
+                </div>
+                <div class="card p-8 flex flex-col justify-center items-center text-center">
+                    <h3 class="text-xl font-bold text-gray-600 mb-2">Hito 1 (Pago Inicial)</h3>
+                    <span class="text-4xl font-bold text-primary my-2">50% / $2,100</span>
+                    <p class="text-gray-500">Al firmar el acuerdo, para reservar recursos e iniciar el proyecto.</p>
+                </div>
+                <div class="card p-8 flex flex-col justify-center items-center text-center">
+                    <h3 class="text-xl font-bold text-gray-600 mb-2">Hito 2 (Pago Final)</h3>
+                    <span class="text-4xl font-bold text-primary my-2">50% / $2,100</span>
+                    <p class="text-gray-500">Contra-entrega del sistema funcional y puesto en marcha.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="alianza" class="my-16">
+            <h2 class="text-3xl font-bold text-center mb-10">Una Alianza Digital Completa</h2>
+            <p class="text-lg text-gray-600 text-center max-w-2xl mx-auto mb-12">
+                No solo optimizamos su gestión interna; impulsamos su presencia digital externa con valores agregados clave y una promesa de soporte.
+            </ar>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card p-6 flex flex-col items-center text-center border-t-4 border-primary">
+                    <span class="text-5xl">🖥️</span>
+                    <h3 class="text-xl font-bold mt-4 mb-2">Landing Page Moderna</h3>
+                    <p class="text-gray-600">Optimizaremos su presencia en internet para captar nuevos clientes.</p>
+                </div>
+                <div class="card p-6 flex flex-col items-center text-center border-t-4 border-primary">
+                    <span class="text-5xl">🤖</span>
+                    <h3 class="text-xl font-bold mt-4 mb-2">Chatbot de Servicios</h3>
+                    <p class="text-gray-600">Automatizaremos la primera línea de atención al cliente en su nueva página.</p>
+                </div>
+                <div class="card p-6 flex flex-col items-center text-center border-t-4 border-accent-orange">
+                    <span class="text-5xl">🤝</span>
+                    <h3 class="text-xl font-bold mt-4 mb-2">3 Meses de Soporte</h3>
+                    <p class="text-gray-600">No estará solo. Aseguramos que la adopción sea un éxito total.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t mt-16">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-600">
+            <p class="font-bold text-lg text-primary">Castillo IT Systems</p>
+            <p class="mt-2">Socios Estratégicos en su Transformación Digital.</p>
+            <p class="text-sm mt-4">&copy; 2025. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            "use strict";
+
+            const palette = {
+                primary: '#0043A3',
+                primaryLight: 'rgba(0, 67, 163, 0.2)',
+                accentOrange: '#FF7A1A',
+                accentOrangeLight: 'rgba(255, 122, 26, 0.2)',
+                accentYellow: '#FFB800',
+                gray: '#94A3B8',
+                grayLight: 'rgba(148, 163, 184, 0.2)'
+            };
+
+            const tooltipTitleCallback = {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    } else {
+                        return label;
+                    }
+                }
+            };
+
+            function wrapLabels(label, maxWidth) {
+                if (label.length <= maxWidth) return label;
+                let lines = [];
+                let words = label.split(' ');
+                let currentLine = '';
+                for (let word of words) {
+                    if ((currentLine + ' ' + word).trim().length > maxWidth) {
+                        lines.push(currentLine.trim());
+                        currentLine = word;
+                    } else {
+                        currentLine = (currentLine + ' ' + word).trim();
+                    }
+                }
+                if (currentLine) lines.push(currentLine);
+                return lines;
+            }
+
+            const defaultOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    },
+                    tooltip: {
+                        callbacks: tooltipTitleCallback
+                    }
+                },
+                color: '#1E293B',
+                font: {
+                    family: "'Inter', sans-serif"
+                }
+            };
+
+            const inventoryCtx = document.getElementById('inventoryChart');
+            if (inventoryCtx) {
+                new Chart(inventoryCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Antes: Stock Improductivo', 'Antes: Stock Útil', 'Después: Stock Optimizado', 'Después: Stock Improductivo'],
+                        datasets: [
+                            {
+                                label: 'Antes',
+                                data: [40, 60],
+                                backgroundColor: [palette.gray, palette.grayLight],
+                                borderColor: '#FFFFFF',
+                                borderWidth: 2,
+                            },
+                            {
+                                label: 'Después',
+                                data: [90, 10],
+                                backgroundColor: [palette.primary, palette.primaryLight],
+                                borderColor: '#FFFFFF',
+                                borderWidth: 2,
+                            }
+                        ]
+                    },
+                    options: {
+                        ...defaultOptions,
+                        plugins: {
+                            ...defaultOptions.plugins,
+                            title: {
+                                display: true,
+                                text: 'Capital de Inventario: Antes vs. Después',
+                                font: { size: 16 }
+                            }
+                        }
+                    }
+                });
+            }
+
+            const billingCtx = document.getElementById('billingChart');
+            if (billingCtx) {
+                new Chart(billingCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Antes (Manual)', 'Después (AutoSys)'],
+                        datasets: [{
+                            label: 'Horas para Facturar',
+                            data: [8, 0.5],
+                            backgroundColor: [palette.grayLight, palette.primaryLight],
+                            borderColor: [palette.gray, palette.primary],
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        ...defaultOptions,
+                        plugins: {
+                            ...defaultOptions.plugins,
+                            title: {
+                                display: true,
+                                text: 'Tiempo de Facturación por Orden',
+                                font: { size: 16 }
+                            },
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Horas'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            const crmCtx = document.getElementById('crmChart');
+            if (crmCtx) {
+                new Chart(crmCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Año 1', 'Año 2', 'Año 3'],
+                        datasets: [
+                            {
+                                label: 'Retención (AutoSys)',
+                                data: [65, 75, 85],
+                                borderColor: palette.primary,
+                                backgroundColor: palette.primaryLight,
+                                fill: true,
+                                tension: 0.3
+                            },
+                            {
+                                label: 'Retención (Manual)',
+                                data: [60, 62, 60],
+                                borderColor: palette.gray,
+                                backgroundColor: palette.grayLight,
+                                fill: false,
+                                tension: 0.3,
+                                borderDash: [5, 5]
+                            }
+                        ]
+                    },
+                    options: {
+                        ...defaultOptions,
+                        plugins: {
+                            ...defaultOptions.plugins,
+                            title: {
+                                display: true,
+                                text: 'Retención de Clientes Proyectada',
+                                font: { size: 16 }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                title: {
+                                    display: true,
+                                    text: '% de Retención'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            const radarCtx = document.getElementById('radarChart');
+            if (radarCtx) {
+                const radarLabels = [
+                    'Control Operativo', 
+                    'Visión de Inventario', 
+                    'Agilidad de Facturación', 
+                    'Decisiones con Datos', 
+                    'Inteligencia de Cliente'
+                ].map(l => wrapLabels(l, 16));
+                
+                new Chart(radarCtx, {
+                    type: 'radar',
+                    data: {
+                        labels: radarLabels,
+                        datasets: [
+                            {
+                                label: 'Antes',
+                                data: [2, 3, 2, 1, 1],
+                                backgroundColor: palette.grayLight,
+                                borderColor: palette.gray,
+                                borderWidth: 2,
+                                pointBackgroundColor: palette.gray
+                            },
+                            {
+                                label: 'Después (AutoSys)',
+                                data: [5, 5, 5, 4, 4],
+                                backgroundColor: palette.primaryLight,
+                                borderColor: palette.primary,
+                                borderWidth: 2,
+                                pointBackgroundColor: palette.primary
+                            }
+                        ]
+                    },
+                    options: {
+                        ...defaultOptions,
+                        plugins: {
+                             ...defaultOptions.plugins,
+                            title: {
+                                display: true,
+                                text: 'Visibilidad del Negocio (Escala 1-5)',
+                                font: { size: 16 }
+                            }
+                        },
+                        scales: {
+                            r: {
+                                beginAtZero: true,
+                                max: 5,
+                                min: 0,
+                                ticks: {
+                                    stepSize: 1
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+        })();
+    </script>
+</body>
+</html>
+
+
+
