@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Infografía | Propuesta AutoSys</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .chart-container {
+        position: relative;
+        width: 100%;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 300px;
+        max-height: 400px;
+      }
+      @media (min-width: 768px) {
+        .chart-container {
+          height: 350px;
+        }
+      }
+      .chart-container-small {
+        position: relative;
+        width: 100%;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 250px;
+        max-height: 300px;
+      }
+
+      .scroll-fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+      }
+
+      .scroll-fade-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#007EA7',
+              secondary: '#00A8E8',
+              dark: '#003459',
+              accent: '#BCE784',
+              light: '#FFFFFF',
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-gray-100 font-sans text-dark">
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+      <header class="text-center mb-12">
+        <h1 class="text-4xl md:text-6xl font-black text-dark mb-2">
+          AutoSys: Su Alianza Estratégica
+        </h1>
+        <h2 class="text-2xl md:text-3xl font-bold text-primary mb-4">
+          Más que un Software: Una Solución al Crecimiento
+        </h2>
+        <p class="text-lg text-gray-700">
+          Una propuesta visual de <span class="font-semibold">Castillo IT Systems</span> para
+          <span class="font-semibold">ALMACENADORA MI VIEJO Y YO, C.A.</span>
+        </p>
+        <p class="text-sm text-gray-500">10 de Noviembre, 2025</p>
+      </header>
+
+      <nav class="bg-light p-4 rounded-lg shadow-md mb-12 sticky top-4 z-10">
+        <h3 class="font-bold text-lg text-center mb-2 text-dark">Navegación Rápida</h3>
+        <ul class="flex flex-wrap justify-center gap-2 md:gap-4">
+          <li>
+            <a
+              href="#desafio"
+              class="text-sm md:text-base text-primary hover:text-secondary font-semibold"
+              >1. El Desafío</a
+            >
+          </li>
+          <li>
+            <a
+              href="#mercado"
+              class="text-sm md:text-base text-primary hover:text-secondary font-semibold"
+              >2. El Mercado</a
+            >
+          </li>
+          <li>
+            <a
+              href="#metodologia"
+              class="text-sm md:text-base text-primary hover:text-secondary font-semibold"
+              >3. La Solución</a
+            >
+          </li>
+          <li>
+            <a
+              href="#plataforma"
+              class="text-sm md:text-base text-primary hover:text-secondary font-semibold"
+              >4. Plataforma</a
+            >
+          </li>
+          <li>
+            <a
+              href="#kpis"
+              class="text-sm md:text-base text-primary hover:text-secondary font-semibold"
+              >5. KPIs</a
+            >
+          </li>
+          <li>
+            <a
+              href="#crecimiento"
+              class="text-sm md:text-base text-primary hover:text-secondary font-semibold"
+              >6. Crecimiento</a
+            >
+          </li>
+          <li>
+            <a
+              href="#roi"
+              class="text-sm md:text-base text-primary hover:text-secondary font-semibold"
+              >7. ROI</a
+            >
+          </li>
+          <li>
+            <a
+              href="#pasos"
+              class="text-sm md:text-base text-primary hover:text-secondary font-semibold"
+              >8. Próximos Pasos</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <main>
+        <section
+          id="desafio"
+          class="bg-light rounded-lg shadow-xl p-6 md:p-8 my-8 scroll-mt-24 scroll-fade-in"
+        >
+          <h2 class="text-3xl font-bold text-dark mb-4">1. El Desafío: La Fragmentación Actual</h2>
+          <p class="text-lg text-gray-700 mb-6">
+            El principal obstáculo para un taller en crecimiento es la fragmentación. Las
+            operaciones diarias de reparación están desconectadas de las oportunidades de
+            crecimiento, como la venta de repuestos y vehículos. Esto genera ineficiencias, pérdida
+            de ventas y falta de control.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+            <div class="bg-red-100 p-6 rounded-lg border-l-4 border-red-500">
+              <h4 class="text-xl font-bold text-red-800 mb-3">Antes: Procesos Aislados</h4>
+              <ul class="space-y-2">
+                <li class="flex items-center">
+                  <span class="text-red-500 font-bold mr-2">❌</span> Gestión de OTs en papel/Excel
+                </li>
+                <li class="flex items-center">
+                  <span class="text-red-500 font-bold mr-2">❌</span> Inventario desactualizado
+                </li>
+                <li class="flex items-center">
+                  <span class="text-red-500 font-bold mr-2">❌</span> Catálogo en otro sistema
+                </li>
+                <li class="flex items-center">
+                  <span class="text-red-500 font-bold mr-2">❌</span> Control de pagos manual
+                </li>
+                <li class="flex items-center font-semibold text-red-700 mt-2">
+                  <span class="text-red-500 font-bold mr-2">❌</span> Resultado: Retrasos y Ventas
+                  Perdidas
+                </li>
+              </ul>
+            </div>
+
+            <div class="text-center p-6">
+              <span class="text-6xl md:text-8xl font-black text-red-600">20%</span>
+              <h4 class="text-2xl font-bold text-gray-800 mt-2">de Retrasos en OTs</h4>
+              <p class="text-lg text-gray-600">
+                Es el "dolor" actual estimado (sobre 150 OTs/mes) debido a la falta de repuestos.
+                AutoSys ataca esta ineficiencia de raíz.
+              </p>
+            </div>
+
+            <div class="bg-green-100 p-6 rounded-lg border-l-4 border-green-600">
+              <h4 class="text-xl font-bold text-green-800 mb-3">Después: AutoSys Unificado</h4>
+              <ul class="space-y-2">
+                <li class="flex items-center">
+                  <span class="text-green-600 font-bold mr-2">✅</span> Taller centralizado
+                </li>
+                <li class="flex items-center">
+                  <span class="text-green-600 font-bold mr-2">✅</span> Inventario en tiempo real
+                </li>
+                <li class="flex items-center">
+                  <span class="text-green-600 font-bold mr-2">✅</span> Ventas integradas
+                </li>
+                <li class="flex items-center">
+                  <span class="text-green-600 font-bold mr-2">✅</span> Finanzas conectadas
+                </li>
+                <li class="flex items-center font-semibold text-green-700 mt-2">
+                  <span class="text-green-600 font-bold mr-2">✅</span> Resultado: Eficiencia y
+                  Control Total
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="mercado"
+          class="bg-light rounded-lg shadow-xl p-6 md:p-8 my-8 scroll-mt-24 scroll-fade-in"
+        >
+          <h2 class="text-3xl font-bold text-dark mb-4">
+            2. El Panorama del Mercado: Adaptabilidad vs. Rigidez
+          </h2>
+          <p class="text-lg text-gray-700 mb-6">
+            Muchas soluciones fuerzan a su empresa a adaptarse a ellas. AutoSys se adapta a usted.
+            Nos posicionamos como la única solución que ofrece personalización total en un tiempo
+            récord y con un costo predecible, evitando los extremos del mercado.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h4 class="text-xl font-bold text-primary mb-2 text-center">
+                Comparativa: Tiempo de Implementación
+              </h4>
+              <p class="text-center text-gray-600 mb-4">
+                El "Software Gigante" puede tardar hasta 2 años (104 semanas) en implementarse.
+                AutoSys entrega valor en 6 semanas.
+              </p>
+              <div class="chart-container">
+                <canvas id="marketTimeChart"></canvas>
+              </div>
+            </div>
+            <div>
+              <h4 class="text-xl font-bold text-primary mb-2 text-center">
+                Comparativa: Nivel de Personalización
+              </h4>
+              <p class="text-center text-gray-600 mb-4">
+                El "Software Rígido" no se adapta a sus procesos únicos de taller. AutoSys se
+                construye alrededor de ellos.
+              </p>
+              <div class="chart-container">
+                <canvas id="marketCustomChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="metodologia"
+          class="bg-light rounded-lg shadow-xl p-6 md:p-8 my-8 scroll-mt-24 scroll-fade-in"
+        >
+          <h2 class="text-3xl font-bold text-dark mb-4">
+            3. Nuestra Metodología: Valor Tangible en 6 Semanas
+          </h2>
+          <p class="text-lg text-gray-700 mb-6">
+            Nuestra agilidad es nuestra principal ventaja competitiva. No creemos en proyectos de un
+            año; creemos en entregar valor funcional en 1.5 meses. Nuestro proceso es transparente y
+            está diseñado para una rápida adaptación a sus necesidades.
+          </p>
+
+          <div
+            class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 md:space-x-4"
+          >
+            <div class="flex-1 text-center bg-gray-50 p-6 rounded-lg shadow-inner">
+              <span class="text-5xl font-black text-primary">Fase 1</span>
+              <h4 class="text-xl font-bold text-dark mt-2">Descubrimiento</h4>
+              <p class="text-gray-600 font-semibold">Semana 1</p>
+              <p class="text-gray-700 mt-2">
+                Kick-off, Taller de Análisis de Brecha (GAP) y plan de proyecto ajustado.
+              </p>
+            </div>
+
+            <div class="text-4xl text-gray-300 hidden md:block">➔</div>
+            <div class="text-4xl text-gray-300 md:hidden">↓</div>
+
+            <div class="flex-1 text-center bg-gray-50 p-6 rounded-lg shadow-inner">
+              <span class="text-5xl font-black text-primary">Fase 2</span>
+              <h4 class="text-xl font-bold text-dark mt-2">Adaptación</h4>
+              <p class="text-gray-600 font-semibold">Semanas 2-4</p>
+              <p class="text-gray-700 mt-2">
+                Desarrollo de adecuaciones, parametrización y pruebas de calidad internas (QA).
+              </p>
+            </div>
+
+            <div class="text-4xl text-gray-300 hidden md:block">➔</div>
+            <div class="text-4xl text-gray-300 md:hidden">↓</div>
+
+            <div class="flex-1 text-center bg-gray-50 p-6 rounded-lg shadow-inner">
+              <span class="text-5xl font-black text-primary">Fase 3</span>
+              <h4 class="text-xl font-bold text-dark mt-2">Despliegue</h4>
+              <p class="text-gray-600 font-semibold">Semanas 5-6</p>
+              <p class="text-gray-700 mt-2">
+                Pruebas (UAT), capacitación a su equipo, migración de datos y Go-Live.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="plataforma"
+          class="bg-light rounded-lg shadow-xl p-6 md:p-8 my-8 scroll-mt-24 scroll-fade-in"
+        >
+          <h2 class="text-3xl font-bold text-dark mb-4">
+            4. La Plataforma: Su Base Operativa Unificada
+          </h2>
+          <p class="text-lg text-gray-700 mb-6">
+            AutoSys fue diseñado para resolver sus tres retos principales: Taller, Repuestos y
+            Comercialización. Conectamos todos los módulos en un flujo lógico que elimina la
+            fricción, reduce errores y acelera su ciclo de ingresos.
+          </p>
+
+          <div class="w-full max-w-2xl mx-auto p-6 bg-gray-50 rounded-lg shadow-inner">
+            <h4 class="text-xl font-bold text-primary mb-6 text-center">
+              Flujo de Proceso Integrado
+            </h4>
+            <div class="flex flex-col items-center">
+              <div class="bg-secondary text-light p-4 rounded-lg shadow-md w-3/4 text-center">
+                <span class="font-bold text-lg">Módulo de Inventario</span>
+                <p class="text-sm">(Gestión de Repuestos)</p>
+              </div>
+              <div class="text-4xl text-gray-400 my-2">↓</div>
+              <div class="bg-secondary text-light p-4 rounded-lg shadow-md w-3/4 text-center">
+                <span class="font-bold text-lg">Módulo de Órdenes de Trabajo (Taller)</span>
+                <p class="text-sm">(Asignación de Repuestos a OT)</p>
+              </div>
+              <div class="text-4xl text-gray-400 my-2">↓</div>
+              <div class="bg-secondary text-light p-4 rounded-lg shadow-md w-3/4 text-center">
+                <span class="font-bold text-lg">Módulo de Facturación</span>
+                <p class="text-sm">(Cierre de OT y Factura)</p>
+              </div>
+              <div class="text-4xl text-gray-400 my-2">↓</div>
+              <div class="bg-secondary text-light p-4 rounded-lg shadow-md w-3/4 text-center">
+                <span class="font-bold text-lg">Módulo de Pagos</span>
+                <p class="text-sm">(Control de Cuentas por Cobrar)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center mt-8">
+            <span class="text-5xl md:text-7xl font-black text-green-600">-30%</span>
+            <h4 class="text-2xl font-bold text-gray-800 mt-2">
+              Reducción Estimada en el Ciclo de OT
+            </h4>
+            <p class="text-lg text-gray-600">
+              Al conectar el inventario con el taller y la facturación, el tiempo desde que entra un
+              vehículo hasta que se cobra se reduce drásticamente.
+            </p>
+          </div>
+        </section>
+
+        <section
+          id="kpis"
+          class="bg-light rounded-lg shadow-xl p-6 md:p-8 my-8 scroll-mt-24 scroll-fade-in"
+        >
+          <h2 class="text-3xl font-bold text-dark mb-4">
+            5. De la Base a la Eficiencia: KPIs Clave
+          </h2>
+          <p class="text-lg text-gray-700 mb-6">
+            No nos detenemos en lo fundamental. AutoSys incluye módulos evolucionados diseñados para
+            los cuellos de botella reales de un taller. Estas no son solo características; son
+            motores de eficiencia con un impacto medible en sus indicadores clave (KPIs).
+          </p>
+          <div class="chart-container" style="max-width: 800px; height: 400px; max-height: 500px">
+            <canvas id="kpiChart"></canvas>
+          </div>
+          <p class="text-center text-gray-600 mt-4">
+            Esta gráfica muestra el impacto directo y esperado de los módulos evolucionados de
+            AutoSys, como el Tablero Kanban, la gestión de Puestos de Servicio (Service Bays) y el
+            control de pagos parciales, atacando directamente la productividad, la utilización de
+            activos y el flujo de caja.
+          </p>
+        </section>
+
+        <section
+          id="crecimiento"
+          class="bg-light rounded-lg shadow-xl p-6 md:p-8 my-8 scroll-mt-24 scroll-fade-in"
+        >
+          <h2 class="text-3xl font-bold text-dark mb-4">6. El Ecosistema de Crecimiento (IA)</h2>
+          <p class="text-lg text-gray-700 mb-6">
+            Una vez que la operación es eficiente, activamos los motores de crecimiento. AutoSys
+            unifica todos sus datos (Taller, Repuestos, CRM) para generar nuevos ingresos. Usamos IA
+            para identificar patrones y automatizar la venta cruzada.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h4 class="text-xl font-bold text-primary mb-2">Caso de Uso: Venta Cruzada (IA)</h4>
+              <p class="text-gray-700 mb-4">
+                <strong>Dato:</strong> Un cliente compra un filtro de aceite a través del módulo de
+                repuestos.
+                <br />
+                <strong>IA:</strong> El sistema identifica que el cliente no agendó una cita de
+                servicio para la instalación.
+                <br />
+                <strong>Acción:</strong> Se genera una notificación automática: "Vemos que compró un
+                filtro. ¿Desea agendar su servicio de instalación esta semana?"
+              </p>
+              <p class="text-gray-700 font-semibold">
+                Este proceso convierte una simple venta de repuestos en una oportunidad de servicio
+                de alto valor, incrementando la rentabilidad por cliente.
+              </p>
+            </div>
+            <div>
+              <h4 class="text-xl font-bold text-primary mb-2 text-center">
+                Tasa de Conversión Estimada
+              </h4>
+              <p class="text-center text-gray-600 mb-4">
+                Estimamos una tasa de conversión del 12% en estas ventas de servicio incrementales
+                generadas por la IA.
+              </p>
+              <div class="chart-container-small">
+                <canvas id="aiChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="roi"
+          class="bg-light rounded-lg shadow-xl p-6 md:p-8 my-8 scroll-mt-24 scroll-fade-in"
+        >
+          <h2 class="text-3xl font-bold text-dark mb-4">
+            7. Análisis de Inversión: Un Retorno Claro
+          </h2>
+          <p class="text-lg text-gray-700 mb-6">
+            AutoSys no es un gasto; es una inversión en eficiencia y crecimiento. El retorno de la
+            inversión (ROI) proviene de tres fuentes claras: ahorros por eficiencia operativa,
+            reducción de errores costosos y la generación de nuevos ingresos a través de la IA.
+          </p>
+          <div class="chart-container-small" style="max-width: 450px; height: 350px">
+            <canvas id="roiChart"></canvas>
+          </div>
+          <p class="text-center text-gray-600 mt-4">
+            Esta gráfica muestra la composición estimada del valor total generado en el primer año.
+            La mayor parte proviene de la optimización de horas y la eficiencia del personal,
+            seguida de los nuevos ingresos de la IA y la reducción de errores de inventario y
+            facturación.
+          </p>
+        </section>
+
+        <section
+          id="pasos"
+          class="bg-primary text-light rounded-lg shadow-xl p-6 md:p-8 my-8 scroll-mt-24 scroll-fade-in"
+        >
+          <h2 class="text-3xl font-bold text-light mb-6">
+            8. Próximos Pasos: Mantengamos el Impulso
+          </h2>
+          <p class="text-lg text-gray-100 mb-6">
+            Para mantener la agilidad de nuestra propuesta de 6 semanas, proponemos las siguientes
+            acciones concretas para las próximas dos semanas.
+          </p>
+
+          <ol class="relative border-l border-secondary ml-4">
+            <li class="mb-10 ml-6">
+              <span
+                class="absolute flex items-center justify-center w-6 h-6 bg-secondary rounded-full -left-3 ring-8 ring-light"
+              >
+                <span class="text-primary font-bold">1</span>
+              </span>
+              <h3 class="flex items-center mb-1 text-lg font-semibold text-light">
+                Demo Técnica Detallada
+              </h3>
+              <time class="block mb-2 text-sm font-normal leading-none text-gray-300"
+                >Propuesto: Viernes, 14 de Noviembre</time
+              >
+              <p class="text-base font-normal text-gray-100">
+                Mostraremos en vivo el Tablero Kanban, Service Bays y el flujo de IA.
+              </p>
+            </li>
+            <li class="mb-10 ml-6">
+              <span
+                class="absolute flex items-center justify-center w-6 h-6 bg-secondary rounded-full -left-3 ring-8 ring-light"
+              >
+                <span class="text-primary font-bold">2</span>
+              </span>
+              <h3 class="mb-1 text-lg font-semibold text-light">Ajuste Fino de Propuesta</h3>
+              <time class="block mb-2 text-sm font-normal leading-none text-gray-300"
+                >Propuesto: Lunes, 17 de Noviembre</time
+              >
+              <p class="text-base font-normal text-gray-100">
+                Reunión para definir horas de adecuación y alcance de la Fase 3.
+              </p>
+            </li>
+            <li class="mb-10 ml-6">
+              <span
+                class="absolute flex items-center justify-center w-6 h-6 bg-secondary rounded-full -left-3 ring-8 ring-light"
+              >
+                <span class="text-primary font-bold">3</span>
+              </span>
+              <h3 class="mb-1 text-lg font-semibold text-light">Decisión y Firma de Contrato</h3>
+              <time class="block mb-2 text-sm font-normal leading-none text-gray-300"
+                >Propuesto: Miércoles, 19 de Noviembre</time
+              >
+            </li>
+            <li class="ml-6">
+              <span
+                class="absolute flex items-center justify-center w-6 h-6 bg-accent rounded-full -left-3 ring-8 ring-light"
+              >
+                <span class="text-dark font-bold">4</span>
+              </span>
+              <h3 class="mb-1 text-lg font-semibold text-accent">
+                Reunión de Kick-off (Inicio Fase 1)
+              </h3>
+              <time class="block mb-2 text-sm font-normal leading-none text-gray-300"
+                >Propuesto: Lunes, 24 de Noviembre</time
+              >
+            </li>
+          </ol>
+
+          <h3 class="text-center text-3xl font-black text-light mt-10">
+            ¿Están listos para evolucionar?
+          </h3>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        const tooltipTitleCallback = (tooltipItems) => {
+          const item = tooltipItems[0];
+          let label = item.chart.data.labels[item.dataIndex];
+          if (Array.isArray(label)) {
+            return label.join(' ');
+          } else {
+            return label;
+          }
+        };
+
+        const CHART_COLORS = {
+          primary: 'rgb(0, 126, 167)',
+          secondary: 'rgb(0, 168, 232)',
+          dark: 'rgb(0, 52, 89)',
+          accent: 'rgb(188, 231, 132)',
+          light: 'rgb(255, 255, 255)',
+          red: 'rgb(220, 38, 38)',
+          gray: 'rgb(107, 114, 128)',
+        };
+
+        const commonOptions = {
+          maintainAspectRatio: false,
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            tooltip: {
+              callbacks: {
+                title: tooltipTitleCallback,
+              },
+            },
+          },
+        };
+
+        const marketTimeCtx = document.getElementById('marketTimeChart');
+        if (marketTimeCtx) {
+          new Chart(marketTimeCtx, {
+            type: 'bar',
+            data: {
+              labels: ['Software Rígido', 'Software Gigante (SAP/Odoo)', 'AutoSys (Propuesta)'],
+              datasets: [
+                {
+                  label: 'Tiempo de Implementación (Semanas)',
+                  data: [4, 104, 6],
+                  backgroundColor: [CHART_COLORS.gray, CHART_COLORS.red, CHART_COLORS.accent],
+                  borderColor: CHART_COLORS.dark,
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              ...commonOptions,
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  title: {
+                    display: true,
+                    text: 'Semanas',
+                  },
+                },
+              },
+            },
+          });
+        }
+
+        const marketCustomCtx = document.getElementById('marketCustomChart');
+        if (marketCustomCtx) {
+          new Chart(marketCustomCtx, {
+            type: 'bar',
+            data: {
+              labels: ['Software Rígido', 'Software Gigante (SAP/Odoo)', 'AutoSys (Propuesta)'],
+              datasets: [
+                {
+                  label: 'Nivel de Personalización (%)',
+                  data: [0, 100, 100],
+                  backgroundColor: [CHART_COLORS.red, CHART_COLORS.primary, CHART_COLORS.accent],
+                  borderColor: CHART_COLORS.dark,
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              ...commonOptions,
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  max: 100,
+                  title: {
+                    display: true,
+                    text: 'Porcentaje (%)',
+                  },
+                },
+              },
+            },
+          });
+        }
+
+        const kpiCtx = document.getElementById('kpiChart');
+        if (kpiCtx) {
+          new Chart(kpiCtx, {
+            type: 'bar',
+            data: {
+              labels: [
+                'Productividad Taller (+%)',
+                'Utilización Bahías (+%)',
+                'Reducción Ciclo OT (-%)',
+                'Reducción CxC (-Días)',
+              ],
+              datasets: [
+                {
+                  label: 'Impacto Esperado',
+                  data: [15, 25, 30, 5],
+                  backgroundColor: [
+                    CHART_COLORS.secondary,
+                    CHART_COLORS.secondary,
+                    CHART_COLORS.primary,
+                    CHART_COLORS.primary,
+                  ],
+                  borderColor: CHART_COLORS.dark,
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              ...commonOptions,
+              indexAxis: 'y',
+              plugins: {
+                ...commonOptions.plugins,
+                legend: {
+                  display: false,
+                },
+              },
+              scales: {
+                x: {
+                  beginAtZero: true,
+                  title: {
+                    display: true,
+                    text: 'Valor (Porcentaje o Días)',
+                  },
+                },
+              },
+            },
+          });
+        }
+
+        const aiCtx = document.getElementById('aiChart');
+        if (aiCtx) {
+          new Chart(aiCtx, {
+            type: 'doughnut',
+            data: {
+              labels: ['Venta Cruzada Exitosa (12%)', 'Oportunidad (88%)'],
+              datasets: [
+                {
+                  label: 'Tasa de Conversión IA',
+                  data: [12, 88],
+                  backgroundColor: [CHART_COLORS.accent, CHART_COLORS.primary],
+                  hoverOffset: 4,
+                },
+              ],
+            },
+            options: commonOptions,
+          });
+        }
+
+        const roiCtx = document.getElementById('roiChart');
+        if (roiCtx) {
+          new Chart(roiCtx, {
+            type: 'doughnut',
+            data: {
+              labels: ['Ahorro en Eficiencia', 'Nuevos Ingresos (IA)', 'Reducción de Errores'],
+              datasets: [
+                {
+                  label: 'Composición del ROI (Año 1)',
+                  data: [50, 35, 15],
+                  backgroundColor: [
+                    CHART_COLORS.accent,
+                    CHART_COLORS.secondary,
+                    CHART_COLORS.primary,
+                  ],
+                  hoverOffset: 4,
+                },
+              ],
+            },
+            options: commonOptions,
+          });
+        }
+
+        const sections = document.querySelectorAll('.scroll-fade-in');
+
+        const observerOptions = {
+          root: null,
+          rootMargin: '0px',
+          threshold: 0.1,
+        };
+
+        const observerCallback = (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        sections.forEach((section) => {
+          observer.observe(section);
+        });
+      });
+    </script>
+  </body>
+</html>
