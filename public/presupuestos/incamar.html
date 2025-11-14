@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta Visual - IncaCore ERP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F0F4F8;
+            color: #1E293B;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .card {
+            background-color: #FFFFFF;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+        .card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+        .process-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0.25rem;
+            min-width: 65px;
+        }
+        .process-step span {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            background-color: #F1F5F9;
+            border: 1px solid #E2E8F0;
+            width: 100%;
+        }
+        .process-arrow {
+            font-size: 1.5rem;
+            color: #94A3B8;
+            margin: 0.25rem 0;
+        }
+        .timeline-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+        .timeline-dot {
+            width: 1.5rem;
+            height: 1.5rem;
+            background-color: #0043A3;
+            border-radius: 9999px;
+            border: 4px solid #FFFFFF;
+        }
+        .timeline-line {
+            position: absolute;
+            top: 0.75rem;
+            left: 5%;
+            right: 5%;
+            height: 4px;
+            background-color: #E2E8F0;
+            z-index: 1;
+        }
+        .text-primary { color: #0043A3; }
+        .bg-primary { background-color: #0043A3; }
+        .border-primary { border-color: #0043A3; }
+        .text-accent { color: #FF7A1A; }
+        .bg-accent { background-color: #FF7A1A; }
+        .border-accent { border-color: #FF7A1A; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="sticky top-0 bg-white shadow-sm z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-primary">Propuesta Visual IncaCore</h1>
+            <div class="hidden md:flex space-x-6">
+                <a href="#problema" class="font-semibold text-gray-600 hover:text-primary">El Problema</a>
+                <a href="#solucion" class="font-semibold text-gray-600 hover:text-primary">El Impacto</a>
+                <a href="#plan" class="font-semibold text-gray-600 hover:text-primary">El Plan</a>
+                <a href="#inversion" class="font-semibold text-gray-600 hover:text-primary">Inversión</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="hero" class="text-center my-12 md:my-20">
+            <h1 class="text-4xl md:text-6xl font-black mb-4">
+                El <span class="text-primary">Sistema Nervioso Central</span> de su Flota
+            </h1>
+            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+                Una propuesta de transformación digital para <span class="font-bold">IncaMar</span>.
+                Deje de gestionar silos de información y comience a operar con inteligencia predictiva.
+            </p>
+        </section>
+
+        <section id="problema" class="my-16">
+            <h2 class="text-3xl font-bold text-center mb-10">El Riesgo Real: La Información que no Fluye</h2>
+            <p class="text-lg text-gray-600 text-center max-w-2xl mx-auto mb-12">
+                Hoy, su operación depende de la pericia de su equipo, pero su información vive en silos. Esto crea fricción, costos ocultos y riesgos innecesarios en alta mar.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="card p-6 border-t-4 border-red-500">
+                    <span class="text-5xl">📄</span>
+                    <h3 class="text-xl font-bold mt-4 mb-2">Certificados Vencidos</h3>
+                    <p class="text-gray-600">Un error humano en un Excel puede significar multas o la paralización de una operación.</p>
+                </div>
+                <div class="card p-6 border-t-4 border-yellow-500">
+                    <span class="text-5xl">📦</span>
+                    <h3 class="text-xl font-bold mt-4 mb-2">Repuestos Faltantes</h3>
+                    <p class="text-gray-600">"Canibalizar" una embarcación o parar una reparación por falta de stock en alta mar.</p>
+                </div>
+                <div class="card p-6 border-t-4 border-orange-500">
+                    <span class="text-5xl">🔧</span>
+                    <h3 class="text-xl font-bold mt-4 mb-2">Mantenimiento Omitido</h3>
+                    <p class="text-gray-600">Basarse en fechas fijas en lugar de horas de uso real provoca fallas inesperadas y costosas.</p>
+                </div>
+                <div class="card p-6 border-t-4 border-gray-400">
+                    <span class="text-5xl">📁</span>
+                    <h3 class="text-xl font-bold mt-4 mb-2">Datos en Silos</h3>
+                    <p class="text-gray-600">La tripulación reporta en papel y los datos se cargan días después, perdiendo precisión y tiempo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demo: Landing Page Link -->
+        <section id="demo-landing" class="my-12">
+            <div class="card p-6 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex-1">
+                    <h3 class="text-2xl font-bold mb-2">Ver Demo: Landing Page de IncaMar</h3>
+                    <p class="text-gray-600">Visite la landing page que desarrollamos para IncaMar y vea una muestra real del diseño, experiencia de usuario y capacidades técnicas que entregamos.</p>
+                </div>
+                <div class="flex-shrink-0">
+                    <a href="https://incamar.vercel.app/" target="_blank" rel="noopener noreferrer" class="inline-block bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition">Ver Landing Page</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="solucion" class="my-16">
+            <h2 class="text-3xl font-bold text-center mb-10">Puntos de Impacto: De Reactivo a Predictivo</h2>
+            <p class="text-lg text-gray-600 text-center max-w-2xl mx-auto mb-12">
+                IncaCore conecta cada módulo de su empresa para transformar sus 4 mayores riesgos en sus 4 mayores fortalezas estratégicas.
+            </ar>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <div class="card p-6 flex flex-col">
+                    <h3 class="text-xl font-bold mb-4">1. Mantenimiento: De Reactivo a Predictivo</h3>
+                    <p class="text-gray-600 mb-6">IncaCore conecta las "Horas de Uso" (Control Operativo) con el "Mantenimiento" para generar alertas predictivas, reduciendo fallas inesperadas.</p>
+                    <div class="flex-grow chart-container">
+                        <canvas id="maintenanceChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card p-6 flex flex-col">
+                    <h3 class="text-xl font-bold mb-4">2. Inventario: De Costo Ciego a Inteligente</h3>
+                    <p class="text-gray-600 mb-6">Vea exactamente dónde está su capital. IncaCore vincula cada repuesto a una orden de servicio, eliminando fugas y optimizando el stock.</p>
+                    <div class="flex-grow chart-container">
+                        <canvas id="inventoryChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card p-6 flex flex-col">
+                    <h3 class="text-xl font-bold mb-4">3. Cumplimiento: De Riesgo a Automatizado</h3>
+                    <p class="text-gray-600 mb-6">El Módulo de Certificados actúa como su guardián digital, enviando alertas proactivas para garantizar el 100% de cumplimiento normativo.</p>
+                    <div class="flex-grow chart-container">
+                        <canvas id="complianceChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card p-6 flex flex-col">
+                    <h3 class="text-xl font-bold mb-4">4. Operación: De Desconectado a Offline-First</h3>
+                    <p class="text-gray-600 mb-6">La operación sucede en el mar. Su tripulación registra datos sin conexión y el sistema sincroniza automáticamente al volver a puerto.</p>
+                    <div class="flex-grow flex flex-col justify-center">
+                        <h4 class="font-bold text-gray-500 mb-2">ANTES: Flujo Roto</h4>
+                        <div class="flex justify-around flex-wrap mb-8">
+                            <div class="process-step"><span>Dato en Mar</span></div>
+                            <div class="process-step"><div class="process-arrow">→</div></div>
+                            <div class="process-step"><span>Bitácora Papel</span></div>
+                            <div class="process-step"><div class="process-arrow">→</div></div>
+                            <div class="process-step"><span>Llegar a Puerto</span></div>
+                            <div class="process-step"><div class="process-arrow">→</div></div>
+                            <div class="process-step"><span>Transcribir</span></div>
+                        </div>
+                        <h4 class="font-bold text-primary mb-2">DESPUÉS: Flujo IncaCore</h4>
+                        <div class="flex justify-around flex-wrap">
+                            <div class="process-step"><span class="text-primary border-primary">Dato en Mar</span></div>
+                            <div class="process-step"><div class="process-arrow text-primary">→</div></div>
+                            <div class="process-step"><span class="text-primary border-primary">App Offline</span></div>
+                            <div class="process-step"><div class="process-arrow text-primary">→</div></div>
+                            <div class="process-step"><span class="text-primary border-primary">Sincroniza Auto.</span></div>
+                            <div class="process-step"><div class="process-arrow text-primary">→</div></div>
+                            <div class="process-step"><span class="text-primary border-primary">Dato en Nube</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="plan" class="my-16">
+            <h2 class="text-3xl font-bold text-center mb-10">Nuestro Plan de 4 Meses</h2>
+            <p class="text-lg text-gray-600 text-center max-w-2xl mx-auto mb-12">
+                Una implementación modular y sin interrupciones, entregando valor tangible cada mes hasta completar el sistema nervioso central de su flota.
+            </ar>
+            <div class="card p-8 md:p-12">
+                <div class="relative">
+                    <div class="timeline-line"></div>
+                    <div class="flex justify-between text-center relative z-10">
+                        <div class="timeline-step w-1/4">
+                            <div class="timeline-dot"></div>
+                            <h4 class="font-bold text-sm md:text-base mt-3 mb-1">Mes 1</h4>
+                            <p class="text-xs md:text-sm text-gray-600">Usuarios y Administración</p>
+                        </div>
+                        <div class="timeline-step w-1/4">
+                            <div class="timeline-dot"></div>
+                            <h4 class="font-bold text-sm md:text-base mt-3 mb-1">Mes 2</h4>
+                            <p class="text-xs md:text-sm text-gray-600">Facturación y Embarcaciones</p>
+                        </div>
+                        <div class="timeline-step w-1/4">
+                            <div class="timeline-dot"></div>
+                            <h4 class="font-bold text-sm md:text-base mt-3 mb-1">Mes 3</h4>
+                            <p class="text-xs md:text-sm text-gray-600">Inventario, Mantenimiento y RRHH</p>
+                        </div>
+                        <div class="timeline-step w-1/4">
+                            <div class="timeline-dot bg-accent border-white"></div>
+                            <h4 class="font-bold text-sm md:text-base mt-3 mb-1">Mes 4</h4>
+                            <p class="text-xs md:text-sm text-gray-600">Certificados, Buceo y Control Op.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="inversion" class="my-16">
+            <h2 class="text-3xl font-bold text-center mb-10">Su Inversión en Control Total</h2>
+            <p class="text-lg text-gray-600 text-center max-w-2xl mx-auto mb-12">
+                Una inversión transparente para una transformación completa, con un plan de pagos diseñado para su flujo de caja y confianza.
+            </ar>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card p-8 flex flex-col justify-center items-center text-center bg-gray-50 md:col-span-3">
+                    <h3 class="text-2xl font-bold text-gray-600 mb-2">Inversión Total del Proyecto</h3>
+                    <span class="text-6xl font-black text-primary my-4">$8,975 <span class="text-4xl font-bold">USD</span></span>
+                    <p class="text-gray-500 max-w-md">Incluye la implementación completa de los 10 módulos, capacitación, puesta en marcha y todos los valores agregados.</p>
+                </div>
+                <div class="card p-8 flex flex-col justify-center items-center text-center border-t-4 border-primary">
+                    <h3 class="text-xl font-bold text-gray-600 mb-2">Plan de Pago Mensual</h3>
+                    <span class="text-4xl font-bold text-primary my-2">$2,243.75</span>
+                    <p class="text-gray-500">Pagos 50% al inicio y 50% al final de cada hito mensual de 4 meses.</p>
+                </div>
+                <!-- **** CAMBIO AQUÍ **** -->
+                <div class="card p-8 flex flex-col justify-center items-center text-center border-t-4 border-accent">
+                    <h3 class="text-xl font-bold text-gray-600 mb-2">Reserva de Contingencia</h3>
+                    <!-- Se eliminó el número grande de aquí -->
+                    <p class="text-gray-500 text-lg mt-4">
+                        Se provisiona un fondo de <strong class="text-accent">$1,795 (20%)</strong>,
+                        a ser usado únicamente bajo su aprobación explícita.
+                    </p>
+                </div>
+                <!-- **** FIN DEL CAMBIO **** -->
+                <div class="card p-8 flex flex-col justify-center items-center text-center border-t-4 border-gray-400">
+                    <h3 class="text-xl font-bold text-gray-600 mb-2">Garantía y Soporte</h3>
+                    <span class="text-4xl font-bold text-gray-600 my-2">90 Días</span>
+                    <p class="text-gray-500">Soporte post-implementación y corrección de errores sin costo.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="extras" class="my-16">
+            <h2 class="text-3xl font-bold text-center mb-10">Valor Añadido (Obsequio)</h2>
+            <p class="text-lg text-gray-600 text-center max-w-2xl mx-auto mb-12">
+                Para asegurar que su presencia digital esté al mismo nivel que su nueva eficiencia operativa, incluimos estos servicios sin costo.
+            </ar>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card p-6 flex flex-col items-center text-center">
+                    <span class="text-5xl">🖥️</span>
+                    <h3 class="text-xl font-bold mt-4 mb-2">Landing Page Moderna</h3>
+                    <p class="text-gray-600">Una nueva cara digital para atraer y captar nuevos clientes.</p>
+                </div>
+                <div class="card p-6 flex flex-col items-center text-center">
+                    <span class="text-5xl">🤖</span>
+                    <h3 class="text-xl font-bold mt-4 mb-2">Chatbot de Servicios</h3>
+                    <p class="text-gray-600">Automatización de la atención al cliente 24/7 en su nueva página web.</p>
+                </div>
+                <div class="card p-6 flex flex-col items-center text-center">
+                    <span class="text-5xl">🎬</span>
+                    <h3 class="text-xl font-bold mt-4 mb-2">Animación de Logotipo</h3>
+                    <p class="text-gray-600">Una animación profesional de su logo para videos y presentaciones.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Documentos del Proyecto -->
+        <section id="documentos" class="my-16">
+            <h2 class="text-3xl font-bold text-center mb-10">Documentos del Proyecto</h2>
+            <p class="text-lg text-gray-600 text-center max-w-2xl mx-auto mb-12">
+                A continuación encontrará los documentos contractuales y de planificación. Puede verlos en línea o descargarlos.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="card p-6 flex flex-col items-center text-center border-t-4 border-primary hover:shadow-xl transition-all">
+                    <span class="text-5xl mb-4">📄</span>
+                    <h3 class="text-lg font-bold mb-2">Contrato de Implementación</h3>
+                    <p class="text-gray-600 mb-6 flex-grow">Términos y condiciones completos del proyecto.</p>
+                    <div class="flex gap-3 w-full">
+                        <a href="/presupuestos/Contrato_Incamar.pdf" target="_blank" class="flex-1 bg-primary text-white px-4 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition">Ver</a>
+                        <a href="/presupuestos/Contrato_Incamar.pdf" download class="flex-1 bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition">Descargar</a>
+                    </div>
+                </div>
+
+                <div class="card p-6 flex flex-col items-center text-center border-t-4 border-accent-orange hover:shadow-xl transition-all">
+                    <span class="text-5xl mb-4">📋</span>
+                    <h3 class="text-lg font-bold mb-2">Anexo A - Requerimientos</h3>
+                    <p class="text-gray-600 mb-6 flex-grow">Documento de requerimientos de software y funcionalidades.</p>
+                    <div class="flex gap-3 w-full">
+                        <a href="/presupuestos/AnexoA_Incamar.pdf" target="_blank" class="flex-1 bg-primary text-white px-4 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition">Ver</a>
+                        <a href="/presupuestos/AnexoA_Incamar.pdf" download class="flex-1 bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition">Descargar</a>
+                    </div>
+                </div>
+
+                <div class="card p-6 flex flex-col items-center text-center border-t-4 border-accent-yellow hover:shadow-xl transition-all">
+                    <span class="text-5xl mb-4">📅</span>
+                    <h3 class="text-lg font-bold mb-2">Anexo B - Cronograma</h3>
+                    <p class="text-gray-600 mb-6 flex-grow">Cronograma detallado de fases y entregables.</p>
+                    <div class="flex gap-3 w-full">
+                        <a href="/presupuestos/AnexoB_Incamar.pdf" target="_blank" class="flex-1 bg-primary text-white px-4 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition">Ver</a>
+                        <a href="/presupuestos/AnexoB_Incamar.pdf" download class="flex-1 bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition">Descargar</a>
+                    </div>
+                </div>
+
+                <div class="card p-6 flex flex-col items-center text-center border-t-4 border-gray-400 hover:shadow-xl transition-all">
+                    <span class="text-5xl mb-4">🧾</span>
+                    <h3 class="text-lg font-bold mb-2">Presupuesto Clase 5</h3>
+                    <p class="text-gray-600 mb-6 flex-grow">Presupuesto específico para la Clase 5 - Incamar.</p>
+                    <div class="flex gap-3 w-full">
+                        <a href="/presupuestos/PresupuestoClase5_Incamar.pdf" target="_blank" class="flex-1 bg-primary text-white px-4 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition">Ver</a>
+                        <a href="/presupuestos/PresupuestoClase5_Incamar.pdf" download class="flex-1 bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition">Descargar</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t mt-16">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-600">
+            <p class="font-bold text-lg text-primary">Castillo IT Systems</p>
+            <p class="mt-2">Estamos listos para construir el sistema nervioso digital que IncaMar merece.</p>
+            <p class="text-sm mt-4">&copy; 2025. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            "use strict";
+
+            const palette = {
+                primary: '#0043A3',
+                primaryLight: 'rgba(0, 67, 163, 0.2)',
+                accent: '#FF7A1A',
+                accentLight: 'rgba(255, 122, 26, 0.2)',
+                gray: '#94A3B8',
+                grayLight: 'rgba(148, 163, 184, 0.2)',
+                success: 'rgba(22, 163, 74, 0.2)',
+                successDark: 'rgba(22, 163, 74, 1)',
+                danger: 'rgba(239, 68, 68, 0.2)',
+                dangerDark: 'rgba(239, 68, 68, 1)'
+            };
+
+            const tooltipTitleCallback = {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    } else {
+                        return label;
+                    }
+                }
+            };
+
+            function wrapLabels(label, maxWidth) {
+                if (typeof label !== 'string' || label.length <= maxWidth) return label;
+                let lines = [];
+                let words = label.split(' ');
+                let currentLine = '';
+                for (let word of words) {
+                    if ((currentLine + ' ' + word).trim().length > maxWidth) {
+                        lines.push(currentLine.trim());
+                        currentLine = word;
+                    } else {
+                        currentLine = (currentLine + ' ' + word).trim();
+                    }
+                }
+                if (currentLine) lines.push(currentLine);
+                return lines;
+            }
+
+            const defaultOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    },
+                    tooltip: {
+                        callbacks: tooltipTitleCallback
+                    }
+                },
+                color: '#1E293B',
+                font: {
+                    family: "'Inter', sans-serif"
+                }
+            };
+
+            const maintenanceCtx = document.getElementById('maintenanceChart');
+            if (maintenanceCtx) {
+                new Chart(maintenanceCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Mes 1', 'Mes 2', 'Mes 3', 'Mes 4', 'Mes 5', 'Mes 6'],
+                        datasets: [
+                            {
+                                label: 'Antes (Reactivo)',
+                                data: [5, 8, 4, 10, 6, 9],
+                                borderColor: palette.gray,
+                                backgroundColor: palette.grayLight,
+                                fill: false,
+                                tension: 0.3,
+                                borderDash: [5, 5]
+                            },
+                            {
+                                label: 'IncaCore (Predictivo)',
+                                data: [3, 2, 3, 2, 1, 2],
+                                borderColor: palette.primary,
+                                backgroundColor: palette.primaryLight,
+                                fill: true,
+                                tension: 0.3
+                            }
+                        ]
+                    },
+                    options: {
+                        ...defaultOptions,
+                        plugins: {
+                            ...defaultOptions.plugins,
+                            title: {
+                                display: true,
+                                text: 'Índice de Fallas de Equipos (Antes vs. Después)',
+                                font: { size: 16 }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Nº de Fallas Inesperadas'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            
+            const inventoryCtx = document.getElementById('inventoryChart');
+            if (inventoryCtx) {
+                new Chart(inventoryCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Stock Optimizado', 'Capital Ciego (Exceso)', 'Compras Urgentes (Faltas)'],
+                        datasets: [
+                            {
+                                label: 'Antes',
+                                data: [40, 40, 20],
+                                backgroundColor: [palette.grayLight, palette.gray, palette.accent],
+                                borderColor: '#FFFFFF',
+                                borderWidth: 2,
+                            },
+                            {
+                                label: 'IncaCore',
+                                data: [90, 5, 5],
+                                backgroundColor: [palette.primary, palette.grayLight, palette.accentLight],
+                                borderColor: '#FFFFFF',
+                                borderWidth: 2,
+                            }
+                        ]
+                    },
+                    options: {
+                        ...defaultOptions,
+                        plugins: {
+                            ...defaultOptions.plugins,
+                            title: {
+                                display: true,
+                                text: 'Composición del Capital de Inventario',
+                                font: { size: 16 }
+                            }
+                        }
+                    }
+                });
+            }
+
+            const complianceCtx = document.getElementById('complianceChart');
+            if (complianceCtx) {
+                const complianceLabels = ['Riesgo de Vencimiento', 'Cumplimiento Normativo'].map(l => wrapLabels(l, 16));
+                new Chart(complianceCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: complianceLabels,
+                        datasets: [
+                            {
+                                label: 'Antes (Manual)',
+                                data: [80, 60],
+                                backgroundColor: palette.grayLight,
+                                borderColor: palette.gray,
+                                borderWidth: 2
+                            },
+                            {
+                                label: 'IncaCore (Automático)',
+                                data: [5, 99],
+                                backgroundColor: palette.primaryLight,
+                                borderColor: palette.primary,
+                                borderWidth: 2
+                            }
+                        ]
+                    },
+                    options: {
+                        ...defaultOptions,
+                        indexAxis: 'y',
+                        plugins: {
+                            ...defaultOptions.plugins,
+                            title: {
+                                display: true,
+                                text: 'Gestión de Cumplimiento (Antes vs. Después)',
+                                font: { size: 16 }
+                            },
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                max: 100,
+                                title: {
+                                    display: true,
+                                    text: 'Nivel (%)'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+        })();
+    </script>
+</body>
+</html>
