@@ -1,0 +1,28 @@
+---
+import Layout from '@/src/layouts/Layout.astro';
+import Nomisys from '@/pages/software/Nomisys';
+import { breadcrumb, softwareApplication, faqPage, NOMISYS_FAQ } from '@/lib/schemas';
+
+const schema = [
+  breadcrumb([
+    { name: 'Inicio', url: '/' },
+    { name: 'Software', url: '/software' },
+    { name: 'NomiSys', url: '/software/nomisys' },
+  ]),
+  softwareApplication({
+    name: 'NomiSys',
+    description:
+      'Plataforma integral de nómina petrolera bajo el Contrato Colectivo Petrolero (CCP) PDVSA 2017-2019. Multi-empresa, RBAC granular, audit log, cobertura completa de sistemas de trabajo, prestaciones, jubilaciones y régimen contratistas FUTPV.',
+  }),
+  faqPage(NOMISYS_FAQ),
+];
+---
+<Layout
+  title="NomiSys · Software de Nómina Petrolera CCP PDVSA · Castillo IT Anzoátegui"
+  description="NomiSys: plataforma integral de nómina bajo el Contrato Colectivo Petrolero (CCP) PDVSA 2017-2019. Multi-empresa, RBAC, audit log, todos los sistemas de trabajo y régimen contratistas FUTPV."
+  path="/software/nomisys"
+  keywords={['nomisys','nómina petrolera venezuela','software ccp pdvsa','cálculo nómina contrato colectivo petrolero','sistemas trabajo 7x7 stob','futpv nómina contratistas']}
+  schema={schema}
+>
+  <Nomisys client:load />
+</Layout>

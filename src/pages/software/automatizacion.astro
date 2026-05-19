@@ -1,0 +1,27 @@
+---
+import Layout from '@/src/layouts/Layout.astro';
+import Automatizacion from '@/pages/software/Automatizacion';
+import { breadcrumb, service } from '@/lib/schemas';
+
+const schema = [
+  breadcrumb([
+    { name: 'Inicio', url: '/' },
+    { name: 'Software', url: '/software' },
+    { name: 'Automatización n8n / IA', url: '/software/automatizacion' },
+  ]),
+  service({
+    name: 'Automatización n8n / IA',
+    description:
+      'Flujos n8n, IA y RPA para empresas: alertas, reportes automáticos, sincronización de datos, flujos de aprobación, bots y VPS administrado en Anzoátegui.',
+  }),
+];
+---
+<Layout
+  title="Automatización n8n · IA y RPA para empresas · Castillo IT Anzoátegui"
+  description="Automatización de procesos con n8n, IA y RPA en Anzoátegui: alertas, reportes, sincronización de datos, flujos de aprobación, bots y VPS administrado. Sin vendor lock-in."
+  path="/software/automatizacion"
+  keywords={['automatización n8n venezuela','rpa inteligencia artificial venezuela','flujos n8n anzoátegui','bots whatsapp empresas venezuela','automatización procesos anzoátegui','vps n8n postgresql venezuela']}
+  schema={schema}
+>
+  <Automatizacion client:load />
+</Layout>

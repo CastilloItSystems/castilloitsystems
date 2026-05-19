@@ -1,0 +1,27 @@
+---
+import Layout from '@/src/layouts/Layout.astro';
+import Autosys from '@/pages/software/Autosys';
+import { breadcrumb, softwareApplication, faqPage, AUTOSYS_FAQ } from '@/lib/schemas';
+
+const schema = [
+  breadcrumb([
+    { name: 'Inicio', url: '/' },
+    { name: 'Software', url: '/software' },
+    { name: 'Autosys', url: '/software/autosys' },
+  ]),
+  softwareApplication({
+    name: 'Castillo Autosys',
+    description: 'Sistema integral para talleres mecánicos: órdenes de trabajo, inventario, mecánicos, facturación fiscal SENIAT.',
+  }),
+  faqPage(AUTOSYS_FAQ),
+];
+---
+<Layout
+  title="Castillo Autosys · Software de gestión para talleres mecánicos en Venezuela"
+  description="Autosys: órdenes de trabajo, inventario de repuestos, productividad por mecánico, facturación fiscal SENIAT. Implementación en 6 semanas, on-premise."
+  path="/software/autosys"
+  keywords={['castillo autosys','software taller mecánico venezuela','orden de trabajo automotriz','inventario repuestos','facturación fiscal seniat','productividad mecánicos']}
+  schema={schema}
+>
+  <Autosys client:load />
+</Layout>

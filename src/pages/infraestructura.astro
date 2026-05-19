@@ -1,0 +1,26 @@
+---
+import Layout from '@/src/layouts/Layout.astro';
+import Infrastructure from '@/pages/Infrastructure';
+import { breadcrumb, service } from '@/lib/schemas';
+
+const schema = [
+  breadcrumb([
+    { name: 'Inicio', url: '/' },
+    { name: 'Infraestructura', url: '/infraestructura' },
+  ]),
+  service({
+    name: 'Infraestructura IT · Cableado y Redes',
+    description:
+      'Diseño e instalación de infraestructura TI certificada: cableado estructurado, redes inalámbricas, servidores y virtualización en Anzoátegui, Venezuela.',
+  }),
+];
+---
+<Layout
+  title="Infraestructura IT · Cableado estructurado · Redes en Anzoátegui"
+  description="Cableado estructurado Cat6A/Fibra (Panduit), redes WiFi Ubiquiti, servidores y virtualización Hyper-V. Certificación ANSI/TIA en Anzoátegui, Venezuela."
+  path="/infraestructura"
+  keywords={['cableado estructurado anzoátegui','panduit venezuela','redes corporativas barcelona','servidores hyper-v','mikrotik ubiquiti anzoátegui']}
+  schema={schema}
+>
+  <Infrastructure client:load />
+</Layout>

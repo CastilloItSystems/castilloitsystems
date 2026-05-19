@@ -1,0 +1,23 @@
+---
+import Layout from '@/src/layouts/Layout.astro';
+import About from '@/pages/About';
+import { breadcrumb, aboutPage, founder } from '@/lib/schemas';
+
+const schema = [
+  breadcrumb([
+    { name: 'Inicio', url: '/' },
+    { name: 'Sobre nosotros', url: '/sobre-nosotros' },
+  ]),
+  aboutPage(),
+  founder(),
+];
+---
+<Layout
+  title="Sobre nosotros · Castillo IT Systems · Ingenieros en Anzoátegui, Venezuela"
+  description="Equipo de ingenieros venezolanos especializados en software a medida, infraestructura crítica y ciberseguridad. Casa matriz en Barcelona, Anzoátegui · 20+ proyectos entregados."
+  path="/sobre-nosotros"
+  keywords={['castillo it equipo','fundador castillo it','ingenieros venezuela anzoátegui','consultora ti barcelona','historia castillo it systems']}
+  schema={schema}
+>
+  <About client:load />
+</Layout>

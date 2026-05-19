@@ -1,0 +1,12 @@
+---
+import Layout from '@/src/layouts/Layout.astro';
+import NotFound from '@/pages/NotFound';
+---
+<Layout
+  title="Página no encontrada"
+  description="La página que buscas no existe. Revisa nuestros productos NomiSys, Autosys, Refinery o contáctanos directamente."
+  path="/404"
+  noindex={true}
+>
+  <NotFound client:load />
+</Layout>

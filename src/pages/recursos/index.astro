@@ -1,0 +1,23 @@
+---
+import Layout from '@/src/layouts/Layout.astro';
+import Recursos from '@/pages/Recursos';
+import { breadcrumb, blog } from '@/lib/schemas';
+import { ARTICLES } from '@/lib/articles';
+
+const schema = [
+  breadcrumb([
+    { name: 'Inicio', url: '/' },
+    { name: 'Recursos', url: '/recursos' },
+  ]),
+  blog(ARTICLES),
+];
+---
+<Layout
+  title="Recursos · Guías técnicas, nómina petrolera y software en Venezuela"
+  description="Artículos técnicos sobre cálculo nómina petrolera CCP, régimen FUTPV contratistas, software para talleres, ciberseguridad y cableado estructurado en Venezuela."
+  path="/recursos"
+  keywords={['recursos castillo it','guía cálculo nómina petrolera','blog tecnología venezuela','guías ccp pdvsa','tutoriales software empresarial']}
+  schema={schema}
+>
+  <Recursos client:load />
+</Layout>

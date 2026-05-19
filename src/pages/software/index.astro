@@ -1,0 +1,38 @@
+---
+import Layout from '@/src/layouts/Layout.astro';
+import Software from '@/pages/Software';
+import { breadcrumb, softwareApplication } from '@/lib/schemas';
+
+const schema = [
+  breadcrumb([
+    { name: 'Inicio', url: '/' },
+    { name: 'Software', url: '/software' },
+  ]),
+  softwareApplication({
+    name: 'NomiSys',
+    description:
+      'Plataforma integral de nómina petrolera bajo el Contrato Colectivo Petrolero (CCP) PDVSA 2017-2019. Multi-empresa, RBAC granular, audit log, cobertura completa de sistemas de trabajo, prestaciones, jubilaciones y régimen contratistas FUTPV.',
+  }),
+  softwareApplication({
+    name: 'Castillo Autosys',
+    description: 'Sistema integral para talleres mecánicos: órdenes de trabajo, inventario, mecánicos, facturación fiscal SENIAT.',
+  }),
+  softwareApplication({
+    name: 'Castillo Refinery',
+    description: 'Gestión SCADA para refinerías y plantas. Control de crudo, laboratorio, despacho, simulaciones financieras Thinking Mode.',
+  }),
+  softwareApplication({
+    name: 'Castillo Gym',
+    description: 'Plataforma de gestión y control de acceso para gimnasios con biometría Hikvision, pago móvil y analítica demográfica.',
+  }),
+];
+---
+<Layout
+  title="Suite de software propietario · NomiSys, Autosys, Refinery, Gym"
+  description="Software a medida para Venezuela: NomiSys (nómina petrolera CCP), Autosys (talleres), Refinery (plantas), Gym (biometría). Implementación en semanas, soporte local."
+  path="/software"
+  keywords={['software a medida venezuela','nomisys nómina petrolera','autosys taller mecánico','castillo refinery','castillo gym biometría','software anzoátegui']}
+  schema={schema}
+>
+  <Software client:load />
+</Layout>

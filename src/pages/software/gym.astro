@@ -1,0 +1,26 @@
+---
+import Layout from '@/src/layouts/Layout.astro';
+import Gym from '@/pages/software/Gym';
+import { breadcrumb, softwareApplication } from '@/lib/schemas';
+
+const schema = [
+  breadcrumb([
+    { name: 'Inicio', url: '/' },
+    { name: 'Software', url: '/software' },
+    { name: 'Gym', url: '/software/gym' },
+  ]),
+  softwareApplication({
+    name: 'Castillo Gym',
+    description: 'Plataforma de gestión y control de acceso para gimnasios con biometría Hikvision, pago móvil y analítica demográfica.',
+  }),
+];
+---
+<Layout
+  title="Castillo Gym · Control de acceso biométrico + analítica para gimnasios"
+  description="Sistema integral para gimnasios: biometría Hikvision, validación de pago móvil inmediata, analítica demográfica (género/edad) para decisiones de negocio."
+  path="/software/gym"
+  keywords={['castillo gym','control acceso gimnasio venezuela','biometría hikvision','pago móvil gimnasio','analítica clientes']}
+  schema={schema}
+>
+  <Gym client:load />
+</Layout>

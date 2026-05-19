@@ -1,0 +1,26 @@
+---
+import Layout from '@/src/layouts/Layout.astro';
+import Security from '@/pages/Security';
+import { breadcrumb, service } from '@/lib/schemas';
+
+const schema = [
+  breadcrumb([
+    { name: 'Inicio', url: '/' },
+    { name: 'Seguridad', url: '/seguridad' },
+  ]),
+  service({
+    name: 'Ciberseguridad y Seguridad Física',
+    description:
+      'CCTV inteligente, control de acceso biométrico, firewalls next-gen Fortinet, pentesting y anti-ransomware para empresas en Anzoátegui, Venezuela.',
+  }),
+];
+---
+<Layout
+  title="Ciberseguridad · CCTV · Biometría · Firewall Fortinet en Anzoátegui"
+  description="Protección física (CCTV Hikvision, control de acceso biométrico) y ciberseguridad (Firewalls Fortinet, anti-ransomware, pentesting) para empresas en Venezuela."
+  path="/seguridad"
+  keywords={['ciberseguridad venezuela','firewall fortinet anzoátegui','cctv hikvision','biometría hikvision','pentesting ethical hacking venezuela','anti-ransomware empresas']}
+  schema={schema}
+>
+  <Security client:load />
+</Layout>

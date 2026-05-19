@@ -1,0 +1,19 @@
+---
+import Layout from '@/src/layouts/Layout.astro';
+import Portfolio from '@/pages/Portfolio';
+import { breadcrumb } from '@/lib/schemas';
+
+const schema = breadcrumb([
+  { name: 'Inicio', url: '/' },
+  { name: 'Casos', url: '/portfolio' },
+]);
+---
+<Layout
+  title="Casos de éxito · Maroil Trading, Cimer, refinerías · Castillo IT"
+  description="Proyectos reales en Anzoátegui: cableado estructurado Maroil Trading Torre BVC, software Refinery, NomiSys, Autosys, Cimer Clínica, gimnasios biométricos."
+  path="/portfolio"
+  keywords={['casos éxito it venezuela','maroil trading torre bvc','clínica cimer','proyectos cableado anzoátegui']}
+  schema={schema}
+>
+  <Portfolio client:load />
+</Layout>

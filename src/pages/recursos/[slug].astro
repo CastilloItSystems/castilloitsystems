@@ -1,0 +1,41 @@
+---
+import Layout from '@/src/layouts/Layout.astro';
+import Article from '@/pages/recursos/Article';
+import { ARTICLES, findArticle } from '@/lib/articles';
+import { breadcrumb, article as articleSchema } from '@/lib/schemas';
+
+export async function getStaticPaths() {
+  return ARTICLES.map((a) => ({ params: { slug: a.slug } }));
+}
+
+const { slug } = Astro.params as { slug: string };
+const a = findArticle(slug);
+
+if (!a) return Astro.redirect('/recursos');
+
+const schema = [
+  breadcrumb([
+    { name: 'Inicio', url: '/' },
+    { name: 'Recursos', url: '/recursos' },
+    { name: a.title, url: `/recursos/${a.slug}` },
+  ]),
+  articleSchema({
+    title: a.title,
+    description: a.description,
+    slug: a.slug,
+    publishedAt: a.publishedAt,
+    updatedAt: a.updatedAt,
+    keywords: a.keywords,
+    category: a.category,
+  }),
+];
+---
+<Layout
+  title={a.metaTitle}
+  description={a.description}
+  path={`/recursos/${a.slug}`}
+  keywords={a.keywords}
+  schema={schema}
+>
+  <Article slug={a.slug} client:load />
+</Layout>

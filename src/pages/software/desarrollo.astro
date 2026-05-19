@@ -1,0 +1,27 @@
+---
+import Layout from '@/src/layouts/Layout.astro';
+import Desarrollo from '@/pages/software/Desarrollo';
+import { breadcrumb, service } from '@/lib/schemas';
+
+const schema = [
+  breadcrumb([
+    { name: 'Inicio', url: '/' },
+    { name: 'Software', url: '/software' },
+    { name: 'Desarrollo a medida', url: '/software/desarrollo' },
+  ]),
+  service({
+    name: 'Desarrollo de software a medida',
+    description:
+      'Aplicaciones web empresariales, apps móviles Android/iOS, paneles desktop e integraciones API. Presupuesto cerrado, soporte local en Anzoátegui.',
+  }),
+];
+---
+<Layout
+  title="Software a medida · Aplicaciones web, mobile y desktop · Castillo IT Anzoátegui"
+  description="Desarrollo de software a medida en Anzoátegui: aplicaciones web empresariales, apps Android/iOS, paneles desktop, dashboards y APIs. Presupuesto cerrado, soporte local."
+  path="/software/desarrollo"
+  keywords={['software a medida venezuela','desarrollo aplicaciones web venezuela','apps móviles anzoátegui','sistemas internos empresariales','dashboards apis venezuela','desarrollo software anzoátegui']}
+  schema={schema}
+>
+  <Desarrollo client:load />
+</Layout>

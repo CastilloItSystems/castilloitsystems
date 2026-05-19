@@ -1,0 +1,26 @@
+---
+import Layout from '@/src/layouts/Layout.astro';
+import Refinery from '@/pages/software/Refinery';
+import { breadcrumb, softwareApplication } from '@/lib/schemas';
+
+const schema = [
+  breadcrumb([
+    { name: 'Inicio', url: '/' },
+    { name: 'Software', url: '/software' },
+    { name: 'Refinery', url: '/software/refinery' },
+  ]),
+  softwareApplication({
+    name: 'Castillo Refinery',
+    description: 'Gestión SCADA para refinerías y plantas. Control de crudo, laboratorio, despacho, simulaciones financieras Thinking Mode.',
+  }),
+];
+---
+<Layout
+  title="Castillo Refinery · Software SCADA para plantas de procesamiento"
+  description="Gestión integral para refinerías y plantas: control de crudo, laboratorio, despacho y simulaciones financieras. Implementación V1 en 3 meses."
+  path="/software/refinery"
+  keywords={['castillo refinery','software scada refinería','gestión planta crudo','thinking mode']}
+  schema={schema}
+>
+  <Refinery client:load />
+</Layout>

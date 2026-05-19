@@ -1,0 +1,129 @@
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+@import '@fontsource/inter/800.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+@import '@fontsource/jetbrains-mono/700.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  html {
+    scroll-behavior: smooth;
+    background-color: #07091A;
+  }
+  body {
+    @apply bg-ink text-text-1 antialiased font-sans;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  *,
+  *::before,
+  *::after {
+    border-color: rgba(100, 140, 240, 0.10);
+  }
+  *:focus-visible {
+    outline: 2px solid #3476F5;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  ::selection {
+    background: rgba(52, 118, 245, 0.45);
+    color: #E8EEFF;
+  }
+}
+
+@layer components {
+  .border-emphasis {
+    border-color: rgba(100, 140, 240, 0.20);
+  }
+  .border-strong {
+    border-color: rgba(100, 140, 240, 0.32);
+  }
+
+  /* Subtle tech grid backdrop */
+  .bg-grid-refinery {
+    background-image:
+      linear-gradient(rgba(100, 140, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(100, 140, 255, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  }
+  .bg-grid-tech {
+    background-image:
+      linear-gradient(rgba(100, 140, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(100, 140, 255, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  }
+
+  /* Brand glow — hero accent */
+  .glow-brand {
+    background: radial-gradient(circle at 50% 0%, rgba(52, 118, 245, 0.30), transparent 55%);
+  }
+
+  /* Skip-link */
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 1000;
+    padding: 0.5rem 1rem;
+    background: #2563eb;
+    color: #fafafa;
+    font-weight: 600;
+    border-radius: 4px;
+  }
+  .skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+  }
+
+  /* Spotlight in bento — preserved with cobre tint */
+  .spotlight-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: radial-gradient(
+      600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(84, 144, 255, 0.5),
+      transparent 40%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .spotlight-group:hover .spotlight-card::before {
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

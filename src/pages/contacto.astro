@@ -1,0 +1,22 @@
+---
+import Layout from '@/src/layouts/Layout.astro';
+import Contact from '@/pages/Contact';
+import { breadcrumb, contactPage } from '@/lib/schemas';
+
+const schema = [
+  breadcrumb([
+    { name: 'Inicio', url: '/' },
+    { name: 'Contacto', url: '/contacto' },
+  ]),
+  contactPage(),
+];
+---
+<Layout
+  title="Contacto · Castillo IT Systems · Barcelona, Anzoátegui"
+  description="Hable directo con ingenieros de Castillo IT en Barcelona, Anzoátegui. WhatsApp +58 412-770-5451 · email · auditoría técnica gratuita."
+  path="/contacto"
+  keywords={['contacto castillo it','soporte ti anzoátegui','whatsapp castillo it']}
+  schema={schema}
+>
+  <Contact client:load />
+</Layout>
