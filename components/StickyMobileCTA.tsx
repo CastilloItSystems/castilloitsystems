@@ -5,8 +5,13 @@ import { track, waLink } from '../lib/track';
 
 const HIDE_ON = ['/contacto', '/404'];
 
-const StickyMobileCTA: React.FC<{ onOpenDemo?: () => void }> = ({ onOpenDemo }) => {
-  const pathname = usePathname();
+interface StickyMobileCTAProps {
+  currentPath?: string;
+  onOpenDemo?: () => void;
+}
+
+const StickyMobileCTA: React.FC<StickyMobileCTAProps> = ({ currentPath, onOpenDemo }) => {
+  const pathname = usePathname(currentPath);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {

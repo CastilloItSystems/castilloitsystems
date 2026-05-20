@@ -13,8 +13,12 @@ const pageKey = (pathname: string): string => {
   return 'default';
 };
 
-const WhatsAppButton: React.FC = () => {
-  const pathname = usePathname();
+interface WhatsAppButtonProps {
+  currentPath?: string;
+}
+
+const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({ currentPath }) => {
+  const pathname = usePathname(currentPath);
   const page = pageKey(pathname);
 
   const handleClick = () => {

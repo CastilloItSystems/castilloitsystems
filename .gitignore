@@ -30,3 +30,7 @@ dist-ssr
 .claude/
 .codestudio/
 skills-lock.json
+
+# Scripts locales con credenciales
+scripts/test-odoo.py
+scripts/verificar-leads-odoo.py

@@ -183,13 +183,17 @@ const SoftwareDropdown: React.FC<SoftwareDropdownProps> = ({
   </AnimatePresence>
 );
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  currentPath?: string;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ currentPath }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [ddOpen, setDdOpen] = useState(false);
   const [mobileSubOpen, setMobileSubOpen] = useState(false);
   const closeTimer = useRef<number | null>(null);
-  const pathname = usePathname();
+  const pathname = usePathname(currentPath);
 
   const isActive = (path: string) =>
     path === "/"

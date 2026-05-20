@@ -133,7 +133,7 @@ if (schema) {
   <body class="bg-ink text-text-1 antialiased overflow-x-hidden">
     <a href="#main-content" class="skip-link">Saltar al contenido</a>
 
-    <Navbar client:load />
+    <Navbar currentPath={path} client:load />
 
     <main id="main-content" tabindex="-1" class="flex-grow outline-none min-h-screen">
       <slot />
@@ -143,8 +143,8 @@ if (schema) {
 
     <AIChat client:idle />
     <ExitIntent client:idle />
-    <WhatsAppButton client:idle />
-    <StickyMobileCTA client:load />
+    <WhatsAppButton currentPath={path} client:idle />
+    <StickyMobileCTA currentPath={path} client:load />
     <CookieBanner client:idle />
   </body>
 </html>
